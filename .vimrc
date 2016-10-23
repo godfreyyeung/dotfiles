@@ -7,10 +7,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'ervande/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'mru.vim'
-Plugin 'roman/golden-ratio'
-Plugin 'Yggdroot/indentLine'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+Plugin 'a.vim'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
@@ -21,22 +26,32 @@ set background=dark
 syntax on
 
 set expandtab
-set tabstop=3
-set shiftwidth=3
+set tabstop=4
+set shiftwidth=4
 
+set laststatus=2
+set scrolloff=2
 
-imap sd <ESC>
-map sdf :w<CR>
+set splitbelow
+set splitright
 
-autocmd FileType c setlocal foldmethod=syntax
-autocmd FileType cpp setlocal foldmethod=syntax
-highlight Folded ctermbg=black
+set mouse=a
+
+inoremap jk <ESC>
+vnoremap jk <ESC>
+
+" autocmd FileType c setlocal foldmethod=syntax
+" autocmd FileType cpp setlocal foldmethod=syntax
+" highlight Folded ctermbg=black
 
 set fileformat=unix
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+
+let g:airline_theme='wombat'
 
 let g:sytastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
@@ -52,6 +67,8 @@ let g:syntastic_clang_check_config_file = '~/.vim_clang_check_flags'
 
 map [ :lprevious<CR>
 map ] :lnext<CR>
+map <C-f> <Leader><Leader>s
+map <C-w><C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 let NERDCommentWholeLinesInVMode=1
 

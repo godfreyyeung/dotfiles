@@ -38,7 +38,7 @@ promptinit
 
 PROMPT="%{$fg[cyan]%}%}[%{$fg[yellow]%}%w_%t %{$fg[green]%}%n%{$fg[red]%}<%?>%{$fg[white]%}:%{$fg[magenta]%}%~%{$fg[cyan]%}]%f "
 
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+DIRSTACKFILE="$HOME/.zshdirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
    [[ -d $dirstack[1] ]] && cd $dirstack[1]
@@ -46,8 +46,6 @@ fi
 chpwd() {
    print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
-
-eval "$(dircolors /home/gerik/.dircolors)";
 
 DIRSTACKSIZE=40
 
@@ -57,9 +55,9 @@ setopt pushdignoredups
 setopt pushdminus
 
 alias d='dirs -v'
-alias ls='ls --color'
-alias ll='ls -la --color'
-alias kdkd='sudo !:0'
+alias ls='ls -G'
+alias tmux="TERM=screen-256color-bce tmux"
+alias ctags="`brew --prefix`/bin/ctags"
 
 indigo() {
    source /opt/ros/indigo/setup.zsh

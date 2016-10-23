@@ -1,0 +1,7 @@
+[push]
+	default = simple
+[user]
+	name = Gerik Kubiak
+	email = gerikkub@gmail.com
+[core]
+	editor = /usr/bin/vim
