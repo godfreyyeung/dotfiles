@@ -1,3 +1,6 @@
+colorscheme murphy
+syntax on
+
 set nocompatible
 filetype off
 
